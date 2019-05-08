@@ -745,16 +745,19 @@
           obj = parseRgb(value, true);
         }
         sel = -1;
-        for(i = 0; i < settings.swatches.length; ++i) {
-          if(obj.r === settings.swatches[i].r && obj.g === settings.swatches[i].g && obj.b === settings.swatches[i].b && obj.a === settings.swatches[i].a) {
+        for(i = 0; i < chartCfg.swatches.length; ++i) {
+
+          if(chartCfg.swatches.indexOf(value) !== -1) {
             sel = i;
             break;
           }
         }
 
+        sel = chartCfg.swatches.indexOf(value)
+
         input.parent().find('.minicolors-swatches .minicolors-swatch').removeClass('selected');
         if(sel !== -1) {
-          input.parent().find('.minicolors-swatches .minicolors-swatch').eq(i).addClass('selected');
+          input.parent().find('.minicolors-swatches .minicolors-swatch').eq(sel).addClass('selected');
         }
       }
 
